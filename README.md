@@ -1,28 +1,26 @@
 # OSXChromeDecrypt
 Decrypt Google Chrome and Chromium Passwords on Mac OS X. No dependencies, quick, fast.
 
+These are the passwords saved via the "Would you like to remember this password" popup when you login to a website.
+
 Great for if you want to export all of your passwords with one command, as oppposed to manually selecting each one through Chrome's UI.
 
 Also great for forensic analysis, as you can obtain the safe storage key through a variety of methods.
-____
-This is a very lightweight python script that will
 
-1.) Look for any Google Chrome Profiles
-  
-2.) Look for any stored passwords in those profiles (I.e. passwords saved via "Would you like to remember this password" in       chrome)
-  
-3.) Get the decryption key from the keychain WITHOUT having to confirm the keychain password.
-  
-4.) Use this key to decrypt the passwords
-  
-5.) Print out all of the passwords in a pretty format.
-  
-____
+# Information
 
-Example usage (from Terminal.app): python ChromePasswords.py
+1. Look for any encrypted password data stored in ```~/Library/Application Support/Google/Chrome/Profiles */Login Data``` 
+2. Get the decryption key from the keychain WITHOUT having to confirm the users password!
+3. Use this key to decrypt the passwords.
+4. Print out all of the passwords in a user friendly format.
+  
+# Example usage: 
+
+```python ChromePasswords.py``` 
 
 Then confirm keychain access by clicking "allow"
 
+```
 OUTPUT:
 
 [1] https://xxxxxxxx.yyyyyyy.zzzzzzz/login.php
@@ -37,9 +35,4 @@ OUTPUT:
   
 	Pass: cook1010101
   
-
-____
-
-You can also run this without ever having the program touch the disk, by running the following command 
-
-"curl https://raw.githubusercontent.com/manwhoami/OSXChromeDecrypt/master/ChromePasswords.py | python" 
+```
