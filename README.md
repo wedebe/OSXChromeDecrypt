@@ -19,6 +19,27 @@ This is a very lightweight python script that will
   
 ____
 
+Example usage (from Terminal.app): python ChromePasswords.py
+
+Then confirm keychain access by clicking "allow"
+
+OUTPUT:
+
+[1] https://xxxxxxxx.yyyyyyy.zzzzzzz/login.php
+
+	User: bobloblaw
+  
+	Pass: supersecretpassword
+  
+[2] https://timcook.apple.com/apple-login
+
+	User: tim
+  
+	Pass: cook1010101
+  
+
+____
+
 You can also run this without ever having the program touch the disk, by running the following command 
 
 "curl https://raw.githubusercontent.com/manwhoami/OSXChromeDecrypt/master/ChromePasswords.py | python" 
