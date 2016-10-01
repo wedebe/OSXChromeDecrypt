@@ -18,7 +18,9 @@ def chromeDecrypt(encrypted_value, iv, key=None): #AES decryption using the PBKD
 def chromeProcess(safeStorageKey, loginData):
     iv = ''.join(('20',) * 16) #salt, iterations, iv, size - https://cs.chromium.org/chromium/src/components/os_crypt/os_crypt_mac.mm
     key = hashlib.pbkdf2_hmac('sha1', safeStorageKey, b'saltysalt', 1003)[:16]
-    database = sqlite3.connect(loginData)
+    fd = os.open(loginData, os.O_RDONLY) #open as read only
+    database = sqlite3.connect('/dev/fd/%d' % fd)
+    os.close(fd)
     sql = 'select username_value, password_value, action_url from logins'
     decryptedList = []
     with database:
