@@ -21,7 +21,7 @@ def chromeProcess(safeStorageKey, loginData):
     fd = os.open(loginData, os.O_RDONLY) #open as read only
     database = sqlite3.connect('/dev/fd/%d' % fd)
     os.close(fd)
-    sql = 'select username_value, password_value, action_url from logins'
+    sql = 'select username_value, password_value, origin_url from logins'
     decryptedList = []
     with database:
         for user, encryptedPass, url in database.execute(sql):
